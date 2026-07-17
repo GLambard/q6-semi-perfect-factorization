@@ -1,0 +1,49 @@
+{
+  "run_id": "2026-07-17_lazy_sat_seed1",
+  "purpose": "Replay the lazy SAT stage that produced the frozen 8-of-9 near-witness",
+  "evidence_class": "seeded SAT-based finite combinatorial search with necessary lazy connectivity cuts",
+  "working_directory": "/workspace/scratch/ad5ffca6aa1c/q6_factorization",
+  "environment_variables": {
+    "Q6_SEED": "1 (program default)",
+    "Q6_STOP_AT_BAD_PAIRS": "1",
+    "Q6_LOCK_PAIRS": "0 (program default)",
+    "Q6_SKIP_SIGN": "0 (program default)"
+  },
+  "search_command": [
+    "node", "solve_lazy_sat.js", "6", "3",
+    "reproduction_runs/2026-07-17_lazy_sat_seed1/candidate_sat_reproduced.json",
+    "100000"
+  ],
+  "historical_expectation": {
+    "status": "near_witness",
+    "expected_exit_status": 31,
+    "bad_cross_pairs": 1,
+    "component_excess": 2,
+    "near_witness_sha256": "9540153c3f9c67236ed3249948845bbd77d9d62d7a3ec68fc7a8b1feaa86f89f"
+  },
+  "observed_result": {
+    "status": "near_witness",
+    "exit_status": 31,
+    "rounds": 5067,
+    "connectivity_cuts": 89540,
+    "solver_elapsed_ms": 1386280,
+    "wrapper_elapsed_seconds": 1388.8314386790007,
+    "bad_cross_pairs": 1,
+    "component_excess": 2,
+    "remaining_cycle_lengths": [10, 22, 32],
+    "near_witness_sha256": "9465cb0dcf00fc13533c0ef49cfcd11daba044370db5bbeab744f68eaeb6d6d4",
+    "byte_identical_to_historical_near_witness": false,
+    "semantic_reproduction": true
+  },
+  "inputs": {
+    "solve_lazy_sat.js": "sha256:91a7a83d9a73b1d48a3538b45d430a4f76798dee6c8061fc41c68cdc8f12c137"
+  },
+  "environment": {
+    "node": "24.14.0",
+    "logic-solver": "2.0.1",
+    "solver_core": "MiniSat image bundled with logic-solver 2.0.1",
+    "operating_system": "Linux x86_64, kernel 6.12.47",
+    "processor": "Intel Xeon Platinum 8370C"
+  },
+  "claim_limit": "This run semantically reproduces discovery of an 8-of-9 near-witness, but not the historical near-witness bytes. It is not a proof of completeness or nonexistence for any residual instance."
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "2026-07-17_kempe_seed1_r3",
+  "supersedes_failed_runs": [
+    "2026-07-17_kempe_seed1",
+    "2026-07-17_kempe_seed1_r2"
+  ],
+  "prior_failures": "The external time and script utilities were unavailable or incompatible; neither prior attempt launched the Python search.",
+  "purpose": "Exact replay of the Kempe-component beam search that produced the Q6 certificate",
+  "evidence_class": "seeded finite combinatorial search followed by independent certificate verification",
+  "working_directory": "/workspace/scratch/ad5ffca6aa1c/q6_factorization",
+  "search_command": [
+    "python3", "kempe_search.py", "candidate.json.best.json",
+    "reproduction_runs/2026-07-17_kempe_seed1_r3/candidate_reproduced.json",
+    "--beam", "2000", "--depth", "20", "--mask-cap", "128", "--seed", "1"
+  ],
+  "logging_wrapper": "run_logged.py launches the search command unchanged and records combined stdout/stderr, UTC times, elapsed wall time, and exit status.",
+  "parameters": {
+    "beam": 2000,
+    "maximum_depth": 20,
+    "mask_cap": 128,
+    "seed": 1
+  },
+  "historical_expectation": {
+    "status": "found",
+    "trade_depth": 8,
+    "visited_states": 902324,
+    "certificate_sha256": "3d3a476aa481ac0e5a0fd51e3f4a677d8dadf5ec3c000ed0f972dee1982bf8db"
+  },
+  "observed_result": {
+    "status": "found",
+    "trade_depth": 8,
+    "visited_states": 599257,
+    "elapsed_seconds": 134.96710256799997,
+    "exit_status": 0,
+    "certificate_sha256": "3d3a476aa481ac0e5a0fd51e3f4a677d8dadf5ec3c000ed0f972dee1982bf8db",
+    "byte_identical_to_reference_certificate": true,
+    "verification": "accepted by verifier.py, verifier_cleanroom.py, and verifier_cleanroom.py under python -O"
+  },
+  "state_count_resolution": "The frozen script and parameters regenerate the exact certificate after 599257 visited states. The earlier uncaptured value 902324 is not reproducible from these artifacts and must not be used in the manuscript.",
+  "inputs": {
+    "kempe_search.py": "sha256:8d07640def2df790dfba114ac62756940352cb1452239294e5888a98c79489df",
+    "candidate.json.best.json": "sha256:9540153c3f9c67236ed3249948845bbd77d9d62d7a3ec68fc7a8b1feaa86f89f"
+  },
+  "reference_certificate": {
+    "candidate_repaired.json": "sha256:3d3a476aa481ac0e5a0fd51e3f4a677d8dadf5ec3c000ed0f972dee1982bf8db"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "operating_system": "Linux x86_64, kernel 6.12.47",
+    "processor": "Intel Xeon Platinum 8370C",
+    "search_dependencies": "Python standard library only"
+  },
+  "protocol_deviation": "The SAW experiment runner was unavailable. The run is frozen with this manifest, a complete wrapper-generated transcript, exit status, environment record, and SHA-256 hashes."
+}
